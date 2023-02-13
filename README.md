@@ -26,7 +26,7 @@
 
 [Transformer Encoder](Vision%20Transfomer%20%E5%8B%89%E5%BC%B7%E4%BC%9A%2060794d262d0a4d05846680b714c939d2/Transformer%20Encoder%205f54a03260b64c6cbdb41501df01778b.md)
 
-      [MHSA (Multi-Head Self-Attention)](Vision%20Transfomer%20%E5%8B%89%E5%BC%B7%E4%BC%9A%2060794d262d0a4d05846680b714c939d2/Transformer%20Encoder%205f54a03260b64c6cbdb41501df01778b/MHSA%20(Multi-Head%20Self-Attention)%2041f6c97a219a47abb8a6899685ca1df3.md)
+[MHSA (Multi-Head Self-Attention)](Vision%20Transfomer%20%E5%8B%89%E5%BC%B7%E4%BC%9A%2060794d262d0a4d05846680b714c939d2/Transformer%20Encoder%205f54a03260b64c6cbdb41501df01778b/MHSA%20(Multi-Head%20Self-Attention)%2041f6c97a219a47abb8a6899685ca1df3.md)
 
 [MLP Head & ViT実装](Vision%20Transfomer%20%E5%8B%89%E5%BC%B7%E4%BC%9A%2060794d262d0a4d05846680b714c939d2/MLP%20Head%20&%20ViT%E5%AE%9F%E8%A3%85%205e7f555c0b924befbe2ee79662c55dbf.md)
 
