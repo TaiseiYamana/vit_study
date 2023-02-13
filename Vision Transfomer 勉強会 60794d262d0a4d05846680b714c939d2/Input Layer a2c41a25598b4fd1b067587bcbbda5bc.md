@@ -1,10 +1,16 @@
-# 2-3 InputLayer
+# Input Layer
 
-![スクリーンショット 2022-11-21 21.24.21.png](2-3%20InputLayer%20a2c41a25598b4fd1b067587bcbbda5bc/%25E3%2582%25B9%25E3%2582%25AF%25E3%2583%25AA%25E3%2583%25BC%25E3%2583%25B3%25E3%2582%25B7%25E3%2583%25A7%25E3%2583%2583%25E3%2583%2588_2022-11-21_21.24.21.png)
+# Input Layer 概要
 
-# step1 patch分割
+![スクリーンショット 2022-11-21 21.24.21.png](ViT%E3%81%AE%E5%85%A8%E4%BD%93%E5%83%8F%20b1a3e0eaec0043b0bb8573af890819c0/%25E3%2582%25B9%25E3%2582%25AF%25E3%2583%25AA%25E3%2583%25BC%25E3%2583%25B3%25E3%2582%25B7%25E3%2583%25A7%25E3%2583%2583%25E3%2583%2588_2022-11-21_21.24.21.png)
 
-![スクリーンショット 2022-11-27 16.07.07.png](2-3%20InputLayer%20a2c41a25598b4fd1b067587bcbbda5bc/%25E3%2582%25B9%25E3%2582%25AF%25E3%2583%25AA%25E3%2583%25BC%25E3%2583%25B3%25E3%2582%25B7%25E3%2583%25A7%25E3%2583%2583%25E3%2583%2588_2022-11-27_16.07.07.png)
+Input Layerでは入力画像をPatchに分割し、各Patchをベクトルに変換します。
+
+その後、各Patchのベクトルに画像全体の情報を表現しているクラストークンと結合しTransformer Encoderへ出力します。
+
+# 1: patch分割
+
+![スクリーンショット 2022-11-27 16.07.07.png](Input%20Layer%20a2c41a25598b4fd1b067587bcbbda5bc/%25E3%2582%25B9%25E3%2582%25AF%25E3%2583%25AA%25E3%2583%25BC%25E3%2583%25B3%25E3%2582%25B7%25E3%2583%25A7%25E3%2583%2583%25E3%2583%2588_2022-11-27_16.07.07.png)
 
 224*224の画像を16*16個もしくは14*14個のパッチに分割します。（画像は3*3個）
 
@@ -25,9 +31,9 @@ $(P^2 \cdot C)$：Patchのベクトルサイズ
 
 $224 \times 224 \times 3   \Rightarrow     16 \times 16 \times(14^2 \cdot 3)$
 
-# step2 flatten（平坦化）
+# 2: flatten（平坦化）
 
-![スクリーンショット 2022-11-27 16.07.20.png](2-3%20InputLayer%20a2c41a25598b4fd1b067587bcbbda5bc/%25E3%2582%25B9%25E3%2582%25AF%25E3%2583%25AA%25E3%2583%25BC%25E3%2583%25B3%25E3%2582%25B7%25E3%2583%25A7%25E3%2583%2583%25E3%2583%2588_2022-11-27_16.07.20.png)
+![スクリーンショット 2022-11-27 16.07.20.png](Input%20Layer%20a2c41a25598b4fd1b067587bcbbda5bc/%25E3%2582%25B9%25E3%2582%25AF%25E3%2583%25AA%25E3%2583%25BC%25E3%2583%25B3%25E3%2582%25B7%25E3%2583%25A7%25E3%2583%2583%25E3%2583%2588_2022-11-27_16.07.20.png)
 
 3次元テンソルのpatchを１次元のベクトルに変換します。
 
@@ -36,7 +42,7 @@ $224 \times 224 \times 3   \Rightarrow     16 \times 16 \times(14^2 \cdot 3)$
 $16 \times 16 \times(14^2 \cdot 3)   \Rightarrow     16 \times 16 \times(1 \times 588)$
 　　　　　　　　　　　　　　　　　　↑１次元のベクトル表現
 
-# step3 Enbedding (埋め込み処理)
+# 3: Enbedding (埋め込み処理)
 
 Patchのベクトルよりもより良いベクトルを得るための埋め込みを実施します。
 
@@ -56,7 +62,7 @@ $(P^2 \cdot C)$：埋め込み前のパッチのベクトルサイズ
 
 $D$：埋め込み後のベクトルの長さ
 
-# step4 class token (クラストークン)
+# 4: class token (クラストークン)
 
 $x_{class} \in \mathbb{R}^D$ ：クラストークン
 
@@ -72,9 +78,9 @@ $x_{class} \in \mathbb{R}^D$ ：クラストークン
 
 $[x_{class}; x^1_pE;x^2_pE;\cdots;x^{N_p}_pE] \in \mathbb{R}^{(N_p + 1) \times D}$
 
-# step5 Positional Enbedeeing (位置埋め込み）
+# 5: Positional Enbedeeing (位置埋め込み）
 
-![Untitled](2-3%20InputLayer%20a2c41a25598b4fd1b067587bcbbda5bc/Untitled.png)
+![Untitled](Input%20Layer%20a2c41a25598b4fd1b067587bcbbda5bc/Untitled.png)
 
 矩形内ピンク：埋め込み処理後とクラストークン結合
 
@@ -97,8 +103,6 @@ $E_{pos} \in \mathbb{R}^{(N_p + 1)\times D}$ ：位置埋め込み
 パッチの位置情報とはパッチが画像内のどこに位置するかを示す情報です。
 
 # 実装
-
-[Google Colaboratory](https://colab.research.google.com/drive/1nffFJxd7zgM-Qbm5gS79lSa4JONicurw?usp=sharing)
 
 ```python
 # ----------------------------
@@ -183,3 +187,9 @@ class VitInputLayer(nn.Module):
         z_0 = z_0 + self.pos_emb
         return z_0
 ```
+
+# 引用文献
+
+[GitHub - ghmagazine/vit_book](https://github.com/ghmagazine/vit_book)
+
+[An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](https://arxiv.org/abs/2010.11929)
