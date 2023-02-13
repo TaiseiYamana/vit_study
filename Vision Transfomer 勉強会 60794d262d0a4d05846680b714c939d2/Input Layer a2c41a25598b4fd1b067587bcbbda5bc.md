@@ -92,7 +92,7 @@ $[x_{class}; x^1_pE;x^2_pE;\cdots;x^{N_p}_pE] \in \mathbb{R}^{(N_p + 1) \times D
 
 $[x_{class}; x^1_pE;x^2_pE;\cdots;x^{N_p}_pE] + E \in \mathbb{R}^{(N_p + 1) \times D}$
 
-$z = \[x_{class}; x^1_p E;x^2_pE;\cdots;x^{N_p}_pE\] + E_{pos} \in \mathbb{R}^{(N_p + 1) \times D}$
+$z = \[x_{class}; x^1_p E;x^2_pE;\cdots;x^{N_p}_pE\]$ $+ E_{pos} \in \mathbb{R}^{(N_p + 1) \times D}$
 
 $E_{pos} \in \mathbb{R}^{(N_p + 1)\times D}$ ：位置埋め込み
 
