@@ -30,7 +30,7 @@
 
 ### 4. [MLP Head & ViT実装](Vision%20Transfomer%20%E5%8B%89%E5%BC%B7%E4%BC%9A%2060794d262d0a4d05846680b714c939d2/MLP%20Head%20&%20ViT%E5%AE%9F%E8%A3%85%205e7f555c0b924befbe2ee79662c55dbf.md)
 
-# ViT 応用研究
+## 応用研究
 
 ![Untitled](Vision%20Transfomer%20%E5%8B%89%E5%BC%B7%E4%BC%9A%2060794d262d0a4d05846680b714c939d2/Untitled.png)
 引用元：https://twitter.com/losnuevetoros/status/1574340621489537024?s=20&t=03lcP_5VTFatyAzXIpqJdw
