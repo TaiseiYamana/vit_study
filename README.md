@@ -1,4 +1,4 @@
-# Vision Transfomer 勉強会
+# Vision Transfomer 学習資料
 
 作成者：TaiseiYamana
 
